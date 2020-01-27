@@ -18,3 +18,5 @@ var repository = [
     types: ['dragon', 'flying']
   }
 ];
+
+document.write(repository[0].name + ' ' + repository[0].height + ' ' + repository[0].type)
