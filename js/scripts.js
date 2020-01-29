@@ -20,10 +20,10 @@ var repository = [
   }
 ];
 
-
+//Loop
 for(var i = 0; i < repository.length; i++){
   document.write('<br>' + 'PokéName: ' + repository[i].name + '   Height: ' + repository[i].height + '  Type: ' + repository[i].type);
-  if (repository.height[i] > 5.5){
+  if (repository[i].height > 5.5){
     document.write(' (--WOW! That\'s a big Pokémon!)')
   }
 }

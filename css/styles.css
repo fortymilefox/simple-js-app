@@ -1,0 +1,28 @@
+/*Pokédex stylesheet*/
+/*Fonts : font-family: 'Fredoka One', cursive;
+font-family: 'Source Sans Pro', sans-serif;*/
+/*Colors: Coral (#FF7F50)*/
+
+
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Source+Sans+Pro&display=swap');
+
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+body {
+  background-color: #FF7F50;
+  margin: 11px
+}
+
+header-body {
+  font-family: 'Fredoka One', cursive;
+  font-size: 89px;
+  color: fff;
+  text-align: center;
+}
