@@ -8,7 +8,7 @@ font-family: 'Source Sans Pro', sans-serif;*/
 
 * {
   font-family: 'Source Sans Pro', sans-serif;
-  color: fff;
+  color: #FFFFFF;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
@@ -20,9 +20,9 @@ body {
   margin: 11px
 }
 
-header-body {
-  font-family: 'Fredoka One', cursive;
+h1 {
+  font-family: 'Fredoka One';
   font-size: 89px;
-  color: fff;
+  color: #FFFFFF;
   text-align: center;
 }
