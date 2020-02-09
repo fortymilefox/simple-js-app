@@ -1,5 +1,6 @@
 //Pokédex Object Array
-var repository = [
+var pokeRepository = (function()
+{var repository = [
   {
     name: 'Dragonite',
     height: 2.2,
@@ -19,6 +20,20 @@ var repository = [
     type: ['Dragon ', ' Flying']
   }
 ];
+
+function  add(pokemon){
+  pokeRepository.push(pokemon);
+}
+
+function getAll() {
+  return pokeRepository;
+}
+
+return {
+  add: add,
+  getAll : getAll
+};
+})();
 
 /* Loop
 for(var i = 0; i < repository.length; i++){
