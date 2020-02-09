@@ -23,6 +23,9 @@ var pokeRepository = (function(){
 
 function  add(name,height,type){
   repository.push(name,height,type);
+  if (typeof value === Object){
+    console.log(value);
+  }
 }
 
 function getAll() {
