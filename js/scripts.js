@@ -1,32 +1,32 @@
 //Pokédex Object Array
-var pokeRepository = (function()
-{var repository = [
-  {
-    name: 'Dragonite',
-    height: 2.2,
-    weight: 210,
-    type: ['Dragon ', ' Flying']
-  },
-  {
-    name: 'Salamence',
-    height: 1.5,
-    weight: 102,
-    type: ['Dragon ', ' Flying']
-  },
-  {
-    name: 'Rayquaza',
-    height: 7,
-    weight: 206.5,
-    type: ['Dragon ', ' Flying']
-  }
-];
+var pokeRepository = (function(){
+  var repository = [
+    {
+      name: 'Dragonite',
+      height: 2.2,
+      weight: 210,
+      type: ['Dragon ', ' Flying']
+    },
+    {
+      name: 'Salamence',
+      height: 1.5,
+      weight: 102,
+      type: ['Dragon ', ' Flying']
+    },
+    {
+      name: 'Rayquaza',
+      height: 7,
+      weight: 206.5,
+      type: ['Dragon ', ' Flying']
+    }
+  ];
 
-function  add(pokemon){
-  pokeRepository.push(pokemon);
+function  add(name,height,type){
+  repository.push(name,height,type);
 }
 
 function getAll() {
-  return pokeRepository;
+  return repository;
 }
 
 return {
@@ -41,12 +41,13 @@ for(var i = 0; i < repository.length; i++){
   if (repository[i].height > 5.5){
     document.write(' (--WOW! That\'s a big Pokémon!)')
   }*/
+ console.log(pokeRepository.getAll());
 
 
 
 
 //forEach loop
-repository.forEach(function(detail){
+pokeRepository.getAll().forEach(function(detail){
   document.write('<br>' + 'PokéName: ' + detail.name + '   Height: ' + detail.height + '  Type: ' + detail.type);
   if (detail.height > 5.5){
     document.write('    (--WOW! That\'s a big Pokémon!)')
