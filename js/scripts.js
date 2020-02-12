@@ -23,8 +23,10 @@ var pokeRepository = (function(){
 
 function  add(name,height,type){
   repository.push(name,height,type);
-  if (typeof value === Object){
+  if (typeof value === 'object'){
     console.log(value);
+  } else {
+    console.log('Poké Error!')
   }
 }
 
@@ -46,12 +48,14 @@ for(var i = 0; i < repository.length; i++){
   }*/
  console.log(pokeRepository.getAll());
 
+pokeRepository.add({name: 'Golem', height: 1.4, type:['Rock', 'Ground']});
+console.log(pokeRepository.getAll());
 
 
 
 //forEach loop
 pokeRepository.getAll().forEach(function(detail){
-  document.write('<br>' + 'PokéName: ' + detail.name + '   Height: ' + detail.height + '  Type: ' + detail.type);
+  document.write('<br>' + 'PokéName:   ' + detail.name   + '|      Height:   ' +   detail.height   + '|     Type: ' + detail.type);
   if (detail.height > 5.5){
     document.write('    (--WOW! That\'s a big Pokémon!)')
   }
