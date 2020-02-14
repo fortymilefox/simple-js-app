@@ -21,13 +21,8 @@ var pokeRepository = (function(){
     }
   ];
 
-function  add(name,height,type){
-  repository.push(name,height,type);
-  if (typeof value === 'object'){
-    console.log(value);
-  } else {
-    console.log('Poké Error!')
-  }
+function add(pokemon) {
+  repository.push(pokemon);
 }
 
 function getAll() {
@@ -40,13 +35,7 @@ return {
 };
 })();
 
-/* Loop
-for(var i = 0; i < repository.length; i++){
-  document.write('<br>' + 'PokéName: ' + repository[i].name + '   Height: ' + repository[i].height + '  Type: ' + repository[i].type);
-  if (repository[i].height > 5.5){
-    document.write(' (--WOW! That\'s a big Pokémon!)')
-  }*/
- console.log(pokeRepository.getAll());
+
 
 pokeRepository.add({name: 'Golem', height: 1.4, type:['Rock', 'Ground']});
 console.log(pokeRepository.getAll());
