@@ -40,13 +40,21 @@ return {
 pokeRepository.add({name: 'Golem', height: 1.4, type:['Rock', 'Ground']});
 console.log(pokeRepository.getAll());
 
-
+//Node select for Pokémon list
+var pokeRepository = document.querySelector('.poke-list');
 
 //forEach loop
 pokeRepository.getAll().forEach(function(detail){
-  document.write('<br>' + 'PokéName:   ' + detail.name   + '|      Height:   ' +   detail.height   + '|     Type: ' + detail.type);
-  if (detail.height > 5.5){
-    document.write('    (--WOW! That\'s a big Pokémon!)')
+  //list item & button for each Pokémon
+  var $listItem = document.createElement('li');
+  $pokeList.append($listItem);
+  var $pokeButton = document.createElement('button');
+  //innerText
+  $pokeButton.innerText = pokemon.name;
+  //class for button
+  $pokeButton.classList.add('list-button');
+  //append button to list items
+  $listItem.appendChild($pokeButton);
   }
-  document.write('<p>')
+
 });
