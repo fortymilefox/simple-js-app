@@ -27,8 +27,14 @@ h1 {
   text-align: center;
 }
 
+button {
+  background-color: #696969; /* Dim Gray */
+  margin: 30px;
+  height: 30px;
+  width: 100px;
+}
+
 .poke-list{
-  background-color: #555555; /* Black */
   border: none;
   color: white;
   padding: 15px 32px;
