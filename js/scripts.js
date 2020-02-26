@@ -1,31 +1,10 @@
+//Node select for Pokémon list
+var $pokeList = document.querySelector('.poke-list');
+
 //Pokédex Object Array
 var pokeRepository = (function(){
-  var repository = [
-    {
-    name: 'Dragonite',
-    height: 2.2,
-    weight: 210,
-    type: ['Dragon ', ' Flying']
-  },
-  {
-    name: 'Salamence',
-    height: 1.5,
-    weight: 102,
-    type: ['Dragon ', ' Flying']
-  },
-  {
-    name: 'Rayquaza',
-    height: 7,
-    weight: 206.5,
-    type: ['Dragon ', ' Flying']
-  },
-
-  {
-    name: 'Golem',
-    height: 1.4,
-    type:['Rock', 'Ground']
-  },
-]
+  var repository = [];
+  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'
 
 
 function add(pokemon) {
@@ -52,24 +31,57 @@ function addListItem(pokemon){
   })
 }
 
-function showDetails(pokemon){
-  console.log(pokemon)
+function showDetails(item){
+  pokeRepository.loadDetails(item).then(function(){
+      console.log(item);
+  });
+}
+
+function loadList() {
+  return fetch(apiUrl) .then(function (response){
+    return response.json();
+  }) .then(function (json){
+    json.results.forEach(function (item){
+      var pokemon = {
+        name: item.name,
+        detailsUrl: item.url
+      };
+      add(pokemon);
+    });
+  }).catch(function (e){
+    console.error(e);
+  })
+}
+
+function loadDetails(item){
+  var url = item.detailsUrl;
+  return fetch(url) .then(function (response){
+    return response.json();
+  }). then(function(details){
+    item.imageUrl = details.sprites.front_default;
+    item.height = details.height;
+    item.types = Object.keys(details.types);
+  }) .catch(function (e){
+    console.error(e);
+  });
 }
 
 return {
   add: add,
   getAll : getAll,
+  //search: search,
+  loadList: loadList,
+  loadDetails: loadDetails,
   addListItem: addListItem,
-  showDetails: showDetails
+  showDetails: showDetails,
+
 };
 
 })();
 
-
-//Node select for Pokémon list
-var $pokeList = document.querySelector('.poke-list');
-
 //forEach loop
-pokeRepository.getAll().forEach(function(newItem){
-  pokeRepository.addListItem(newItem);
-})
+pokeRepository.loadList(). then(function(){
+  pokeRepository.getAll(). forEach(function(pokemon){
+    pokeRepository.addListItem(pokemon);
+  });
+});
