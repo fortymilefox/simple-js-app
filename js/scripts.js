@@ -34,6 +34,7 @@ function addListItem(pokemon){
 function showDetails(item){
   pokeRepository.loadDetails(item).then(function(){
       console.log(item);
+      showModal(item);
   });
 }
 
@@ -66,6 +67,71 @@ function loadDetails(item){
   });
 }
 
+//Modal function
+function showModal(item) {
+  var $modalContainer = document.querySelector('#modal-container');
+  //class to show modal
+  $modalContainer.classList.add('is-visible');
+  //clear existing modal content
+  $modalContainer.innerHTML = '';
+
+  var modal = document.createElement('div');
+  modal.classList.add('modal')
+
+  //new modal content
+  var closeButtonElement = document.createElement('button');
+  closeButtonElement.classList.add('modal-close');
+  closeButtonElement.innerText = 'X'
+
+  //close modal upon click
+  closeButtonElement.addEventListener('click', hideModal);
+
+  //name in modal
+  var nameElement = document.createElement('h1');
+  nameElement.innerText = item.name;
+
+  //height in Modal
+  var heightElement = document.createElement('p');
+  heightElement.innerText = 'Height : ' + item.height + 'm';
+
+
+  //image in modal
+  var picElement = document.createElement('img');
+  picElement.classList.add('modal-img');
+  picElement.setAttribute('src',item.imageUrl);
+
+  //append
+  modal.appendChild(closeButtonElement);
+  modal.appendChild(nameElement);
+  modal.appendChild(picElement);
+  modal.appendChild(heightElement);
+  $modalContainer.appendChild(modal);
+
+}
+
+function  hideModal() {
+  var $modalContainer = document.querySelector('#modal-container');
+  $modalContainer.classList.remove('is-visible');
+}
+
+//hide modal with ESC
+window.addEventListener('keydown', (e) =>{
+  var $modalContainer = document.querySelector('#modal-container');
+  if (
+    e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+});
+
+//click out of Modal
+var $modalContainer = document.querySelector('#modal-container');
+$modalContainer.addEventListener('click', (e) =>
+{
+  var target = e.target;
+  if(target === $modalContainer) {
+    hideModal();
+  }
+})
 return {
   add: add,
   getAll : getAll,
@@ -74,6 +140,8 @@ return {
   loadDetails: loadDetails,
   addListItem: addListItem,
   showDetails: showDetails,
+  showModal: showModal,
+  hideModal: hideModal
 
 };
 
